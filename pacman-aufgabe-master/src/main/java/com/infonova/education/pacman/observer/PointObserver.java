@@ -37,6 +37,11 @@ public class PointObserver implements Observer {
             BackgroundElement bg = level.getBg(newX, newY);
             bg.setType(BackgroundType.FREE);
             level.addBg(bg);
+
+            if(backgroundType == BackgroundType.SUPERDOT)
+            {
+                hero.startSupermode();
+            }
         }
 
 

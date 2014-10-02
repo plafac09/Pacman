@@ -1,5 +1,6 @@
 package com.infonova.education.pacman.strategy;
 
+import com.infonova.education.pacman.BackgroundType;
 import com.infonova.education.pacman.GameObject;
 import com.infonova.education.pacman.Level;
 import com.infonova.education.pacman.UserAction;
@@ -30,8 +31,13 @@ public class HeroMovable implements Movable {
                 break;
         }
 
-        gameObject.setX(newX);
-        gameObject.setY(newY);
+
+        if(level.getBg(newX, newY).getType() != BackgroundType.WALL)
+        {
+            gameObject.setX(newX);
+            gameObject.setY(newY);
+        }
+
 
     }
 

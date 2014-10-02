@@ -15,6 +15,8 @@ public class EnemyMovable implements Movable {
         int newX = gameObject.getX();
         int newY = gameObject.getY();
 
+        if(!h.isSuperMode())
+        {
         if (h.getX() < newX) {
             newX = movePosition(--newX, maxX);
         } else if (h.getX() > newX) {
@@ -24,9 +26,25 @@ public class EnemyMovable implements Movable {
         } else if (h.getY() > newY) {
             newY = movePosition(++newY, maxY);
         }
+        }
+        else
+        {
+            if (h.getX() < newX) {
+                newX = movePosition(++newX, maxX);
+            } else if (h.getX() > newX) {
+                newX = movePosition(--newX, maxX);
+            } else if (h.getY() < newY) {
+                newY = movePosition(++newY, maxY);
+            } else if (h.getY() > newY) {
+                newY = movePosition(--newY, maxY);
+            }
+        }
 
-        gameObject.setX(newX);
-        gameObject.setY(newY);
+        if(level.getBg(newX, newY).getType() != BackgroundType.WALL)
+        {
+            gameObject.setX(newX);
+            gameObject.setY(newY);
+        }
 
     }
 
